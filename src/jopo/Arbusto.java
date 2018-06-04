@@ -15,7 +15,7 @@ import java.util.TimerTask;
  */
 public class Arbusto extends Planta{
 
-    private String Poudar;
+    private String Podar;
     
     
     
@@ -33,11 +33,11 @@ public class Arbusto extends Planta{
     }
     
     public String getPoudar() {
-        return Poudar;
+        return Podar;
     }
 
     public void setPoudar(String Poudar) {
-        this.Poudar = Poudar;
+        this.Podar = Poudar;
     }
 
     @Override
