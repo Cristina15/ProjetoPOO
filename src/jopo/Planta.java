@@ -5,6 +5,7 @@
  */
 package jopo;
 
+import static dao.daoArbusto.obterConexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,25 +15,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Matheus Maia
+ * @author Matheus Maia and Vitoria Cristina
  */
-public abstract class Planta implements dao {
-
+public abstract class Planta implements crud {
+    private int id;
     private String nome;
     private String porte;
     private boolean estado;
 
-    public void tempRegar() {
+    public void tempRegar(Planta p) {
         int delay = 5000;   // delay padrão de 5 seg.
         int interval = 1000;  // intervalo padrão de 1 seg.
         Timer timer = new Timer();
 
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                estado = (!estado);
+                p.setEstado(!estado);
+                try {
+                    atualizar(p);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Planta.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Planta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }, delay, interval);
     }
@@ -53,7 +63,7 @@ public abstract class Planta implements dao {
 
             try (PreparedStatement stmt
                     = conn.prepareStatement(
-                            "INSERT INTO botanica.Planta (nome, porte, estado"
+                            "INSERT INTO botanica.Planta (nome, porte, estado) "
                             + "VALUES (?,?,?)")) {
                 stmt.setString(1, p.getNome());
                 stmt.setString(2, p.getPorte());
@@ -75,12 +85,7 @@ public abstract class Planta implements dao {
 
     public void atualizar(Planta P) throws ClassNotFoundException, SQLException {
         try {
-
-            System.out.println("Método Atualizar");
-            System.out.println(P.getNome() + " esse é o Nomeda Planta");
-            System.out.println(P.getPorte() + " esse é o Porte da Planta");
-            System.out.println(P.getEstado() + " esse é a Estado onde a Planta se encontra");
-
+            
             Connection conn = obterConexao();
             PreparedStatement stmt = conn.prepareStatement(" UPDATE Planta SET "
                     + " nome = ?, porte =?, Estado =?"
@@ -102,21 +107,20 @@ public abstract class Planta implements dao {
     }
 
     public void deletar(Planta p) throws ClassNotFoundException, SQLException {
-
-        boolean deletado = false;
-        try (Connection conn = obterConexao();
+         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(
-                        "UPDATE locadora.Carro SET nome = 0 WHERE id = ? ")) {
-            stmt.setString(1, p.getNome());
+                        "DELETE botanica.Planta  WHERE id_nome = ? ")) {
+            stmt.setInt(1, id);
+
             stmt.executeUpdate();
-            deletado = true;
             conn.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
         }
-
+        
+    
     }
 
     public List<Planta> listar() throws ClassNotFoundException, SQLException {
@@ -183,6 +187,15 @@ public abstract class Planta implements dao {
         return p;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public String getNome() {
         return nome;
     }

@@ -15,13 +15,13 @@ import java.util.List;
  *
  * @author Matheus Maia
  */
-public interface dao {
+public interface crud {
     
-        public void salvar(Object objeto);
-	public void atualizar(Object objeto);
-	public void deletar(int id);
-	public Object getById(int id);
-	public List<Object> getAll();
+//        public void salvar(Object objeto);
+//	public void atualizar(Object objeto);
+//	public void deletar(int id);
+//	public Object getById(int id);
+//	public List<Object> getAll();
         
     /**
      *

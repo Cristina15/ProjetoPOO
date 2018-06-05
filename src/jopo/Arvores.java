@@ -5,27 +5,39 @@
  */
 package jopo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Matheus Maia
+ * @author Matheus Maia and Vitoria Cristina
  */
 public class Arvores extends Planta{
     private String fruto;
     private String altura;
 
     @Override
-    public void tempRegar(){
+    public void tempRegar(Planta p){
     int delay = 20000;   // delay padrão de 20 seg.
     int interval = 20000;  // intervalo padrão de 20 seg.
     Timer timer = new Timer();
     
     timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                setEstado(!getEstado());
+                p.setEstado(!(p.getEstado()));
+                try {
+                    atualizar(p);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Planta.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Planta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }, delay, interval);
     }
@@ -46,30 +58,8 @@ public class Arvores extends Planta{
         this.altura = altura;
     }
 
-    @Override
-    public void salvar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     }
 
-    @Override
-    public void atualizar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void deletar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Object> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
-    
-}
+
