@@ -150,30 +150,20 @@ public class Principal extends javax.swing.JFrame {
         jif.setVisible(true);
     }
     private void menuCadastrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClientesActionPerformed
-        if (cadastroCliente == null || !cadastroCliente.isDisplayable()) {
-            cadastroCliente = new CadastroCliente();
-            DesktopPrincipal.add(cadastroCliente);
-            this.openFrameInCenter(cadastroCliente);
+        if (cadstroPlanta == null || !cadstroPlanta.isDisplayable()) {
+            cadstroPlanta = new CadastroPlanta();
+            DesktopPrincipal.add(cadstroPlanta);
+            this.openFrameInCenter(cadstroPlanta);
         }
-        cadastroCliente.toFront();
+        cadstroPlanta.toFront();
     }//GEN-LAST:event_menuCadastrarClientesActionPerformed
 
     private void menuCadastrarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutosActionPerformed
-        if (cadastroProdutos == null || !cadastroProdutos.isDisplayable()) {
-            cadastroProdutos = new CadastroProdutos();
-            DesktopPrincipal.add(cadastroProdutos);
-            this.openFrameInCenter(cadastroProdutos);
-        }
-        cadastroProdutos.toFront();
+        
     }//GEN-LAST:event_menuCadastrarProdutosActionPerformed
 
     private void menuPesquisarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarProdutosActionPerformed
-        if (pesquisarProduto == null || !pesquisarProduto.isDisplayable()) {
-            pesquisarProduto = new PesquisarProduto();
-            DesktopPrincipal.add(pesquisarProduto);
-            this.openFrameInCenter(pesquisarProduto);
-        }
-        pesquisarProduto.toFront();
+       
     }//GEN-LAST:event_menuPesquisarProdutosActionPerformed
 
     private void menuPesquisarProdutos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarProdutos1ActionPerformed
