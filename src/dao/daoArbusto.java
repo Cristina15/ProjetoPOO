@@ -31,7 +31,7 @@ public class daoArbusto {
         return conn;
     }
     
-      public void salvar(Arbusto p) throws ClassNotFoundException {
+      public static void salvar(Arbusto p) throws ClassNotFoundException {
             try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);
 
@@ -56,7 +56,7 @@ public class daoArbusto {
         }
     }
 
-    public void atualizar(Arbusto p) {
+    public static void atualizar(Arbusto p) {
         try {
             
             Connection conn = obterConexao();
@@ -95,7 +95,7 @@ public class daoArbusto {
     }
     
 
-    public List<Arbusto> getAll() throws ClassNotFoundException, SQLException {
+    public static List<Arbusto>  getAll() throws ClassNotFoundException, SQLException {
         
         List<Arbusto> lista = new ArrayList<Arbusto>();
 

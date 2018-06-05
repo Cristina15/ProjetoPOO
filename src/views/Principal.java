@@ -5,6 +5,10 @@
  */
 package views;
 
+import views.cadastro.CadastroPlanta;
+import views.cadastro.CadastroFlores;
+import views.cadastro.CadastroArvores;
+import views.cadastro.CadastroArbusto;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
 
