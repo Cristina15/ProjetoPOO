@@ -5,7 +5,6 @@
  */
 package views;
 
-
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
 
@@ -15,91 +14,52 @@ import javax.swing.JInternalFrame;
  */
 public class Principal extends javax.swing.JFrame {
 
+    private CadastroArbusto cadastroArbustos = null;
+    private CadastroArvores cadastroArvores = null;
+    private CadastroFlores cadastroFlores = null;
+    private CadastroPlanta cadstroPlanta = null;
+
+    public CadastroArbusto getCadastroArbustos() {
+        return cadastroArbustos;
+    }
+
+    public void setCadastroArbustos(CadastroArbusto cadastroArbustos) {
+        this.cadastroArbustos = cadastroArbustos;
+    }
+
+    public CadastroArvores getCadastroArvores() {
+        return cadastroArvores;
+    }
+
+    public void setCadastroArvores(CadastroArvores cadastroArvores) {
+        this.cadastroArvores = cadastroArvores;
+    }
+
+    public CadastroFlores getCadastroFlores() {
+        return cadastroFlores;
+    }
+
+    public void setCadastroFlores(CadastroFlores cadastroFlores) {
+        this.cadastroFlores = cadastroFlores;
+    }
+
+    public CadastroPlanta getCadstroPlanta() {
+        return cadstroPlanta;
+    }
+
     /**
      * Creates new form Principal2
      */
-    
-   
-    
-    
+    public void setCadstroPlanta(CadastroPlanta cadstroPlanta) {
+        this.cadstroPlanta = cadstroPlanta;
+    }
+
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
-    public CadastroCliente getCadastroCliente() {
-        return cadastroCliente;
-    }
 
-    public void setCadastroCliente(CadastroCliente cadastroCliente) {
-        this.cadastroCliente = cadastroCliente;
-    }
-
-    public EditarCliente getEditarCliente() {
-        return editarCliente;
-    }
-
-    public void setEditarCliente(EditarCliente editarCliente) {
-        this.editarCliente = editarCliente;
-    }
-
-    public PesquisarCliente getPesquisarCliente() {
-        return pesquisarCliente;
-    }
-
-    public void setPesquisarCliente(PesquisarCliente pesquisarCliente) {
-        this.pesquisarCliente = pesquisarCliente;
-    }
-
-    public CadastroProdutos getCadastroProdutos() {
-        return cadastroProdutos;
-    }
-
-    public void setCadastroProdutos(CadastroProdutos cadastroProdutos) {
-        this.cadastroProdutos = cadastroProdutos;
-    }
-
-    public EditarProduto getEditarProduto() {
-        return editarProduto;
-    }
-
-    public void setEditarProduto(EditarProduto editarProduto) {
-        this.editarProduto = editarProduto;
-    }
-
-    public PesquisarProduto getPesquisarProduto() {
-        return pesquisarProduto;
-    }
-
-    public void setPesquisarProduto(PesquisarProduto pesquisarProduto) {
-        this.pesquisarProduto = pesquisarProduto;
-    }
-
-    public TelaVendasUI getTelasVendas() {
-        return telasVendas;
-    }
-
-    public void setTelasVendas(TelaVendasUI telasVendas) {
-        this.telasVendas = telasVendas;
-    }
-
-    public TelaRelatorio getTelaRelatorio() {
-        return telaRelatorio;
-    }
-
-    public void setTelaRelatorio(TelaRelatorio telaRelatorio) {
-        this.telaRelatorio = telaRelatorio;
-    }
-
-    public VizualizarVenda getTelaVizualizarVenda() {
-        return telaVizualizarVenda;
-    }
-
-    public void setTelaVizualizarVenda(VizualizarVenda telaVizualizarVenda) {
-        this.telaVizualizarVenda = telaVizualizarVenda;
-    }
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -190,25 +150,25 @@ public class Principal extends javax.swing.JFrame {
         jif.setVisible(true);
     }
     private void menuCadastrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClientesActionPerformed
-        if(cadastroCliente == null || !cadastroCliente.isDisplayable()){
+        if (cadastroCliente == null || !cadastroCliente.isDisplayable()) {
             cadastroCliente = new CadastroCliente();
             DesktopPrincipal.add(cadastroCliente);
             this.openFrameInCenter(cadastroCliente);
         }
-        cadastroCliente.toFront();       
+        cadastroCliente.toFront();
     }//GEN-LAST:event_menuCadastrarClientesActionPerformed
 
     private void menuCadastrarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutosActionPerformed
-       if(cadastroProdutos == null || !cadastroProdutos.isDisplayable()){
-           cadastroProdutos = new CadastroProdutos();
-           DesktopPrincipal.add(cadastroProdutos);
-           this.openFrameInCenter(cadastroProdutos);
-       }
-       cadastroProdutos.toFront();
+        if (cadastroProdutos == null || !cadastroProdutos.isDisplayable()) {
+            cadastroProdutos = new CadastroProdutos();
+            DesktopPrincipal.add(cadastroProdutos);
+            this.openFrameInCenter(cadastroProdutos);
+        }
+        cadastroProdutos.toFront();
     }//GEN-LAST:event_menuCadastrarProdutosActionPerformed
 
     private void menuPesquisarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarProdutosActionPerformed
-        if(pesquisarProduto == null || !pesquisarProduto.isDisplayable()){
+        if (pesquisarProduto == null || !pesquisarProduto.isDisplayable()) {
             pesquisarProduto = new PesquisarProduto();
             DesktopPrincipal.add(pesquisarProduto);
             this.openFrameInCenter(pesquisarProduto);
