@@ -11,6 +11,7 @@ import views.cadastro.CadastroArvores;
 import views.cadastro.CadastroArbusto;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
+import views.regar.RegarArbusto;
 
 /**
  *
@@ -22,7 +23,18 @@ public class Principal extends javax.swing.JFrame {
     private CadastroArvores cadastroArvores = null;
     private CadastroFlores cadastroFlores = null;
     private CadastroPlanta cadstroPlanta = null;
+    private RegarArbusto regarArbusto = null;
 
+    public RegarArbusto getRegarArbusto() {
+        return regarArbusto;
+    }
+
+    public void setRegarArbusto(RegarArbusto regarArbusto) {
+        this.regarArbusto = regarArbusto;
+    }
+    
+            
+            
     public CadastroArbusto getCadastroArbustos() {
         return cadastroArbustos;
     }
@@ -163,7 +175,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCadastrarClientesActionPerformed
 
     private void menuCadastrarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutosActionPerformed
-        
+        if (regarArbusto == null || !regarArbusto.isDisplayable()) {
+            regarArbusto = new RegarArbusto();
+            DesktopPrincipal.add(regarArbusto);
+            this.openFrameInCenter(regarArbusto);
+        }
+        regarArbusto.toFront();
     }//GEN-LAST:event_menuCadastrarProdutosActionPerformed
 
     private void menuPesquisarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarProdutosActionPerformed
@@ -211,7 +228,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane DesktopPrincipal;
+    public javax.swing.JDesktopPane DesktopPrincipal;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuCadastrarClientes;
     private javax.swing.JMenuItem menuCadastrarProdutos;

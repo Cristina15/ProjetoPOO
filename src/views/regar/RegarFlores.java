@@ -5,23 +5,23 @@
  */
 package views.regar;
 
-import dao.daoArbusto;
+import dao.daoFlores;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import jopo.Arbusto;
+import jopo.Flores;
 
 /**
  *
  * @author matheus.jmaia
  */
-public class RegarArbusto extends javax.swing.JInternalFrame {
+public class RegarFlores extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegarArbusto
      */
-    public RegarArbusto() {
+    public RegarFlores() {
         initComponents();
     }
      boolean resultSearch = false;
@@ -35,14 +35,14 @@ public class RegarArbusto extends javax.swing.JInternalFrame {
      */
     
     public boolean refreshList() throws Exception {
-        List<Arbusto> resultado = daoArbusto.getAll();
+        List<Flores> resultado = daoFlores.getAll();
         DefaultTableModel model = (DefaultTableModel) tabelaResult.getModel();
         model.setRowCount(0);
         if (resultado == null || resultado.size() <= 0) {
             return false;
         }
         for (int i = 0; i < resultado.size(); i++) {
-            Arbusto p = resultado.get(i);
+            Flores p = resultado.get(i);
             if (p != null) {
                 Object[] row = new Object[4];
                 row[0] = p.getId();
@@ -143,7 +143,7 @@ public class RegarArbusto extends javax.swing.JInternalFrame {
         try {
             resultSearch = refreshList();
         } catch (Exception ex) {
-            Logger.getLogger(RegarArbusto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegarFlores.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

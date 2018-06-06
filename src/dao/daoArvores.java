@@ -98,7 +98,7 @@ public class daoArvores {
         
     }
 
-    public List<Arvores> getAll() throws ClassNotFoundException, SQLException {
+    public static List<Arvores> getAll() throws ClassNotFoundException, SQLException {
         
         List<Arvores> lista = new ArrayList<Arvores>();
 

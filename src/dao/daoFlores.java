@@ -124,7 +124,7 @@ public class daoFlores {
 //        return Flores;
 //    }
 
-  public List<Flores> getAll() throws ClassNotFoundException, SQLException {
+  public static List<Flores> getAll() throws ClassNotFoundException, SQLException {
         
         List<Flores> lista = new ArrayList<Flores>();
 
